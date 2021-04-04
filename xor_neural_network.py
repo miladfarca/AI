@@ -109,8 +109,8 @@ epochs = 100000
 
 for e in range(epochs):
     # go through all items in the training data set
-    for item in training_data_input:
-        n.train(training_data_input, training_data_target)
+    for i in range(len(training_data_input)):
+        n.train(training_data_input[i], training_data_target[i])
 
 # query the network after it's trained
 outputs = n.query([1, 1])
