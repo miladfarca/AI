@@ -13,8 +13,8 @@ class neuralNetwork:
         # weights inside the arrays are w_i_j, where link is from node i to node j in the next layer
         # w11 w21
         # w12 w22 etc  
-        self.wih = numpy.random.uniform(-0.5, +0.5, size=(self.inodes, self.hnodes))
-        self.who = numpy.random.uniform(-0.5, +0.5, size=(self.hnodes, self.onodes))
+        self.wih = numpy.random.uniform(-0.5, +0.5, size=(self.hnodes, self.inodes))
+        self.who = numpy.random.uniform(-0.5, +0.5, size=(self.onodes, self.hnodes))
         
         # sample of weights after network was trained
         #self.wih = numpy.array([[13.45747418, 13.45763526], [0.67997597, 0.67997597]])
@@ -84,7 +84,7 @@ class neuralNetwork:
 
 # number of input, hidden and output nodes
 input_nodes = 2
-hidden_nodes = 2
+hidden_nodes = 16
 output_nodes = 2
 
 # learning rate
@@ -105,7 +105,7 @@ training_data_target = [[1, 0], [0, 1], [0, 1], [1, 0]]
 #n.load()
 
 # epochs is the number of times the training data set is used for training
-epochs = 100000
+epochs = 10000
 
 for e in range(epochs):
     # go through all items in the training data set
@@ -113,12 +113,26 @@ for e in range(epochs):
         n.train(training_data_input[i], training_data_target[i])
 
 # query the network after it's trained
+# then print the output, the index of the highest value corresponds to the label
+outputs = n.query([0, 0])
+print(outputs)
+label = numpy.argmax(outputs)
+print("network says ", label)
+
+outputs = n.query([0, 1])
+print(outputs)
+label = numpy.argmax(outputs)
+print("network says ", label)
+
+outputs = n.query([1, 0])
+print(outputs)
+label = numpy.argmax(outputs)
+print("network says ", label)
+
 outputs = n.query([1, 1])
 print(outputs)
+label = numpy.argmax(outputs)
+print("network says ", label)
 
 # save the weights into csv files
 #n.save()
-
-# the index of the highest value corresponds to the label
-label = numpy.argmax(outputs)
-print("network says ", label)
