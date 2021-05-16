@@ -1,4 +1,10 @@
+import sys
 import numpy
+
+### Check if we want to load weights or save new ones.
+load=False
+if (len(sys.argv) >= 2 and sys.argv[1] == 'l'):
+    load=True
 
 class neuralNetwork:
      
@@ -16,10 +22,6 @@ class neuralNetwork:
         self.wih = numpy.random.uniform(-0.5, +0.5, size=(self.hnodes, self.inodes))
         self.who = numpy.random.uniform(-0.5, +0.5, size=(self.onodes, self.hnodes))
         
-        # sample of weights after network was trained
-        #self.wih = numpy.array([[13.45747418, 13.45763526], [0.67997597, 0.67997597]])
-        #self.who = numpy.array([[-48.69608324, 66.5104277 ], [48.69607383, -66.51041481]])
-
         # learning rate
         self.lr = learningrate
         
@@ -71,12 +73,14 @@ class neuralNetwork:
         return final_outputs
 
     def load(self):
+        print("Loading weights ...")
         self.wih = numpy.loadtxt('wih.csv', delimiter=',') 
         self.who = numpy.loadtxt('who.csv', delimiter=',')
 
     def save(self):
         numpy.savetxt('wih.csv', self.wih, delimiter=',') 
         numpy.savetxt('who.csv', self.who, delimiter=',')
+        print("Weights were saved.")
 
     def log(self):
         print(self.wih)
@@ -102,7 +106,8 @@ training_data_input = [[0, 0], [0, 1], [1, 0], [1, 1]]
 training_data_target = [[1, 0], [0, 1], [0, 1], [1, 0]]
 
 # train the neural network, or load previous weights
-#n.load()
+if (load):
+   n.load()
 
 # epochs is the number of times the training data set is used for training
 epochs = 10000
@@ -134,5 +139,6 @@ print(outputs)
 label = numpy.argmax(outputs)
 print("network says ", label)
 
-# save the weights into csv files
-#n.save()
+# save the weights into csv files (if not loaded before).
+if (not load):
+   n.save()
