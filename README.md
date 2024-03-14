@@ -5,14 +5,20 @@ points (0,0),(1,1) from the points (0,1),(1,0), hence it's a perfect candidate f
 
 Our network has 3 layers: input, hidden and output. Input and output layers have 2 nodes while the hidden layer has 16 nodes. Although XOR could be classified under `Binary Classification` we are trying to solve it using `Multi-Class Classification`. Instead of having a single output representing the result, the 2 output layer nodes display the probability of either 0 or 1 being chosen as the XOR result.
 
+There are two versions to choose from. `xor.py` is written with minimal usage of libraries to show how a network is constructed in more depth. `xor_torch.py` is written using PyTorch.
+
 ### Usage
-To train, save weights and query:
+To train, save weights/model and query:
 ```
-python xor_neural_network.py
+python xor.py
+or
+python xor_torch.py
 ```
-To load previous weights and query:
+To load previous weights/model and query:
 ```
-python xor_neural_network.py l
+python xor.py l
+or
+python xor_torch.py l
 ```
 
 ### XOR Expected Output
