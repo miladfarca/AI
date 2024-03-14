@@ -32,7 +32,7 @@ class NeuralNetwork(nn.Module):
         super().__init__()
         # 2 input nodes, 16 hidden nodes and 2 output nodes
         self.input = nn.Linear(2, 16)
-        self.hidden = nn.Linear(16,2)
+        self.hidden = nn.Linear(16, 2)
 
     def init_weights(self):
         for m in self.modules():
