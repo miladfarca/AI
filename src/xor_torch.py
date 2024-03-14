@@ -1,7 +1,7 @@
 import sys
 import torch
-from torch import nn
 import torch.nn.functional as F
+from torch import nn
 
 ### Check if we want to load a model or save a new one.
 load=False
