@@ -99,8 +99,8 @@ n = NeuralNetwork(input_nodes,hidden_nodes,output_nodes, learning_rate)
 
 # training data
 # 0 XOR 0 = 0
-# 1 XOR 0 = 1
 # 0 XOR 1 = 1
+# 1 XOR 0 = 1
 # 1 XOR 1 = 0
 training_data_input = [[0, 0], [0, 1], [1, 0], [1, 1]]
 training_data_target = [[1, 0], [0, 1], [0, 1], [1, 0]]
