@@ -20,8 +20,8 @@ print(f"Using {device} device")
 
 # Training data
 # 0 XOR 0 = 0
-# 1 XOR 0 = 1
 # 0 XOR 1 = 1
+# 1 XOR 0 = 1
 # 1 XOR 1 = 0
 training_data_input = torch.Tensor([[0, 0], [0, 1], [1, 0], [1, 1]]).to(device)
 training_data_target = torch.Tensor([[1, 0], [0, 1], [0, 1], [1, 0]]).to(device)
